@@ -1,0 +1,43 @@
+{% extends "global/base.html" %}
+
+{% block title %}Transactions{% endblock title %} 
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="content">
+    <h1>Transactions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Flow</th>
+                <th>Amount</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in object_list %}
+            <tr>
+                <td><a href="/update/transaction/{{ obj.pk }}">✏️</a></td>
+                <td>{{ obj.created_at }}</td>
+                <td>{{ obj.category.name }}</td>
+                <td>{{ obj.category.flow }}</td>
+                <td>{{ obj.amount }}</td>
+                <td>{{ obj.description }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <h5>No itens yet</h5>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
