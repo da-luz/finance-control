@@ -29,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("PROJECT_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = json.loads(os.environ.get("PROJECT_DEBUG", False))
+DEBUG = json.loads(os.environ.get("PROJECT_DEBUG", "false"))
 
-ALLOWED_HOSTS = json.loads(os.environ.get("PROJECT_ALLOWED_HOSTS"))
+ALLOWED_HOSTS = ["financecontrol.pythonanywhere.com"]
 
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG
